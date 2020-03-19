@@ -89,30 +89,76 @@ Given a directed graph and two nodes in the graph, write a function that indicat
 
 function Graph () {
   this._nodes = {};
+  
 }
 
 Graph.prototype.addNode = function(value) {
-  // implement me...
+  this._nodes[value]=[]
 };
 // Time complexity:
 
 Graph.prototype.removeNode = function(value) {
-  // implement me...
-};
+      for(var key in this._nodes){
+        if(key == value){          
+          delete this._nodes[value]
+          for( var keys in this._nodes){
+              for (var i=0 ;  i< this._nodes[keys].length ; i++){
+                  if(this._nodes[keys][i] === value){
+                    this._nodes[keys].splice(i,1)
+                  }
+              }
+          }
+          break;
+        }        
+      }    
+  };
 // Time complexity:
 
 Graph.prototype.contains = function(value) {
-  // implement me...
-};
+  for(var key in this._nodes){
+    if(key == value){
+      return true
+    }
+    return false;
+  };
+}
 // Time complexity:
 
 Graph.prototype.addEdge = function(value1, value2) {
-  // implement me...
+  if(value1 in this._nodes && value2 in this._nodes){
+    for(var key in this._nodes){
+      if(key == value1){
+       this._nodes[key].push(value2)
+      }
+      else if(key == value2){
+        this._nodes[key].push(value1)
+      }
+    }
+  }
+  
 };
 // Time complexity:
 
 Graph.prototype.removeEdge = function(value1, value2) {
-  // implement me...
+  if(value1 in this._nodes && value2 in this._nodes){
+    for(var key in this._nodes){
+      if(key == value1){
+        for(var i = 0; i < this._nodes[key]; i++){
+          if(this._nodes[key][i] === value2){
+            this._nodes[key].splice(i,1)
+          }
+        }
+       
+      }
+      else if(key == value2){
+        for(var i = 0; i < this._nodes[key]; i++){
+          if(this._nodes[key][i] === value1){
+            this._nodes[key].splice(i,1)
+          }
+        }
+      }
+    }
+  }
 };
 // Time complexity:
 
