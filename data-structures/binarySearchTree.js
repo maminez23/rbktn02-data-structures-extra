@@ -39,15 +39,20 @@ Remove node from tree.
 
 bsTree.checkIfFull()
 => true/false
-A binary tree is full if every node has either zero or two children (no nodes have only one child)
+A binary tree is full if every node has either zero or two children 
+(no nodes have only one child)
 
 bsTree.checkIfBalanced()
 => true/false
-For this exercise, let's say that a tree is balanced if the minimum height and the maximum height differ by no more than 1. The height for a branch is the number of levels below the root.
+For this exercise, let's say that a tree is balanced if
+ the minimum height and the maximum height differ by no more than 1. 
+ The height for a branch is the number of levels below the root.
 
 
 *** Additional Exercises:
-A binary search tree was created by iterating over an array and inserting each element into the tree. Given a binary search tree with no duplicates, how many different arrays would result in the creation of this tree.
+A binary search tree was created by iterating over an array and inserting each
+ element into the tree. Given a binary search tree with no duplicates, how many 
+ different arrays would result in the creation of this tree.
 
 */
 
@@ -58,7 +63,19 @@ function BinarySearchTree (value) {
 }
 
 BinarySearchTree.prototype.insert = function(value) {
-  // implement me...
+  
+  if(value > this.value){
+    if(!this.right){
+      this.right = new BinarySearchTree(value)
+    }
+    this.right.insert(value)
+  }
+  if(value < this.value){
+    if(!this.left){
+      this.left = new BinarySearchTree(value)
+    }
+    this.lef.insert(value)
+  }
 };
 // Time complexity:
 
